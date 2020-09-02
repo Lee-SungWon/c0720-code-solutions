@@ -27,27 +27,21 @@ const product = (accumulator, currentValue) => accumulator * currentValue;
 
 console.log(numbers.reduce(product));
 
-// const balance = (accumulator, currentValue) => {
-//   if (currentValue.type === 'deposit') {
-//     return accumulator += currentValue.amount;
-//   } else {
-//     return accumulator -= currentValue.amount;
-//   }
-// };
+const balance = (accumulator, currentValue) => {
+  if (currentValue.type === 'deposit') {
+    accumulator += currentValue.amount;
+  } else {
+    accumulator -= currentValue.amount;
+  }
+  return accumulator;
+};
 
-// console.log(account.reduce(balance, 0));
+console.log(account.reduce(balance, 0));
 
-// const composite = (accumulator, currentValue) => {
-//   for (const property in currentValue) {
-//     return Object.assign(accumulator, property);
-//   }
-// };
+const composite = (accumulator, currentValue) => {
+  for (const property in currentValue) {
+    return Object.assign(accumulator, property);
+  }
+};
 
-// console.log(traits.reduce(composite, {}));
-
-// Object.assign
-// const composite = (accumulator, currentValue) => {å
-//   return Object.assign(accumulator, currentValue);
-// };
-
-// {color, type, name, level, trainer}
+console.log(traits.reduce(composite, {}));
