@@ -11,6 +11,4 @@ const remove = () => {
   });
 };
 
-remove();
-
 module.exports = remove;

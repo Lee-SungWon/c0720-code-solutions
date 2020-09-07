@@ -12,6 +12,4 @@ const update = () => {
   });
 };
 
-update();
-
 module.exports = update;
