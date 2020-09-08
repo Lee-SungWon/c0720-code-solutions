@@ -1,14 +1,32 @@
 // /* eslint-disable no-unused-vars */
-// const defaults = (target, source) => {
-//   const targetProp = [];
-//   const sourceProp = [];
 
-//   for (const property in target) {
-//     targetPropush(prop);
-//   }
+/*
+Assigns properties of source object to the target object for all properties that are not defined on target.
+*/
 
-//   for (const property in target) {
-//     socrop.push(prop);
-//   }
+const defaults = (target, source) => {
+  const targetProp = [];
+  const sourceProp = [];
 
-// };
+  for (const property in target) {
+    targetProp.push(property);
+  }
+
+  for (const property in source) {
+    sourceProp.push(property);
+  }
+
+  let counter = 0;
+  for (let i = 0; i < sourceProp.length; i++) {
+    for (let j = 0; j < targetProp.length; j++) {
+      if (sourceProp[i] !== targetProp[j]) {
+        counter++;
+      }
+    }
+    if (counter === targetProp.length) {
+      target[sourceProp[i]] = source[sourceProp[i]];
+    }
+    counter = 0;
+  }
+  return target;
+};

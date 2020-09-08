@@ -1,17 +1,11 @@
 /* eslint-disable no-unused-vars */
 const pick = (source, keys) => {
 
-  const obj = { };
-
-  const placeholderArr = [];
+  const obj = {};
 
   for (const property in source) {
-    placeholderArr.push(property);
-  }
-
-  for (let i = 0; i < keys.length; i++) {
-    for (let j = 0; j < placeholderArr.length; j++) {
-      if (keys[i] === placeholderArr[j]) {
+    for (let i = 0; i < keys.length; i++) {
+      if (property === keys[i]) {
         obj[keys[i]] = source[keys[i]];
       }
     }
