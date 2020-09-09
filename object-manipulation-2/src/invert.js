@@ -11,27 +11,35 @@ invert({})
 // -> {}
 */
 
+// const invert = source => {
+//   const obj = source;
+
+//   const sourceProp = [];
+
+//   const sourceValue = [];
+
+//   const newObj = {};
+
+//   for (const property in obj) {
+//     sourceProp.push(property);
+//   }
+
+//   for (let i = 0; i < sourceProp.length; i++) {
+//     sourceValue.push(obj[sourceProp[i]]);
+//   }
+
+//   // combine two arrays into an object;
+//   for (let i = 0; i < sourceProp.length; i++) {
+//     newObj[sourceValue[i]] = sourceProp[i];
+//   }
+
+//   return newObj;
+// };
+
 const invert = source => {
-  const obj = source;
-
-  const sourceProp = [];
-
-  const sourceValue = [];
-
   const newObj = {};
-
-  for (const property in obj) {
-    sourceProp.push(property);
+  for (const property in source) {
+    newObj[source[property]] = property;
   }
-
-  for (let i = 0; i < sourceProp.length; i++) {
-    sourceValue.push(obj[sourceProp[i]]);
-  }
-
-  // combine two arrays into an object;
-  for (let i = 0; i < sourceProp.length; i++) {
-    newObj[sourceValue[i]] = sourceProp[i];
-  }
-
   return newObj;
 };
