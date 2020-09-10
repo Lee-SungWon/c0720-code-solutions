@@ -17,8 +17,8 @@ const grades = [
   }
 ];
 
-// app.use((req, res) => {
-//   console.log(req.param);
+// app.use('/api/grades/:id', (req, res) => {
+//   console.log(req.params.id);
 // });
 
 app.get('/api/grades', (req, res) => {
@@ -26,7 +26,11 @@ app.get('/api/grades', (req, res) => {
 });
 
 app.delete('/api/grades/:id', (req, res) => {
-  grades.splice([req.param.id - 1], 1);
+  for (let i = 0; i < grades.length; i++) {
+    if (grades[i].id === (req.params.id * 1)) {
+      grades.splice(i, 1);
+    }
+  }
   res.sendStatus(204);
 });
 
