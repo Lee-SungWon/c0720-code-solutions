@@ -34,6 +34,19 @@ app.delete('/api/grades/:id', (req, res) => {
   res.sendStatus(204);
 });
 
+/*  way to do the same with findIndex
+app.delete('/api/grades/:id', (req, res, next) => {
+  const id = parseInt(req.params.id, 10);
+  const gradeIndex = grades.findIndex(grade => grade.id === id);
+  if(gradeIndex === -1) {
+    res.sendStats(404);
+  } else {
+    grades.splice(gradeIndex, 1);
+    res.sendStatus(204);
+  }
+});
+*/
+
 app.listen(3000, () => {
   console.log('listening');
 });
