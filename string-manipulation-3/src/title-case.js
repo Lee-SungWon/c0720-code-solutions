@@ -37,10 +37,7 @@ function titleCase(title) {
         word = 'JavaScript';
       }
       newArr[j] = word;
-      // const splice1 = newArr.splice(0, j);
-      // splice1.push(word);
-      // const splice2 = newArr.splice(1, newArr.length - 1);
-      // newArr = splice1.concat(splice2);
+
     }
   }
 
@@ -53,10 +50,7 @@ function titleCase(title) {
         word = 'API';
       }
       newArr[j] = word;
-      // const splice1 = newArr.splice(0, j);
-      // splice1.push(word);
-      // const splice2 = newArr.splice(1, newArr.length - 1);
-      // newArr = splice1.concat(splice2);
+
     }
   }
 

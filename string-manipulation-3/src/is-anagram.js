@@ -1,24 +1,15 @@
-/* eslint-disable no-unused-vars */
-function isAnagram(firstString, secondString) {
-  const firstStringNoSpace = firstString.split(' ').join('');
-  const secondStringNoSpace = secondString.split(' ').join('');
 
-  let counter = 0;
-  let counter2 = 0;
+const isAnagram = (firstString, secondString) => {
+  const firstStringNs = firstString.split(' ').join('');
+  let fsPlaceholder = firstString.split(' ').join('');
+  let ssPlaceholder = secondString.split(' ').join('');
 
-  for (let i = 0; i < firstStringNoSpace.length; i++) {
-    if (secondStringNoSpace.includes(firstStringNoSpace[i])) {
-      counter++;
-    }
+  for (let i = 0; i < firstStringNs.length; i++) {
+    fsPlaceholder = fsPlaceholder.replace(firstString[i], '');
+    ssPlaceholder = ssPlaceholder.replace(firstString[i], '');
   }
 
-  for (let i = 0; i < secondStringNoSpace.length; i++) {
-    if (firstStringNoSpace.includes(secondStringNoSpace[i])) {
-      counter2++;
-    }
-  }
-
-  if (counter === firstStringNoSpace.length && counter2 === secondStringNoSpace.length && firstStringNoSpace.length === secondStringNoSpace.length) {
+  if (fsPlaceholder === ssPlaceholder) {
     return true;
   } return false;
-}
+};
