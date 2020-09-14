@@ -1,4 +1,3 @@
-// const { createElement } = require('../lib');
 import { createElement } from '../lib';
 
 export default class TodoList {
