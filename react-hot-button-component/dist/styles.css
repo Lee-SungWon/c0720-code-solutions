@@ -1,0 +1,28 @@
+button {
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+}
+
+.purple {
+  background-color: indigo
+}
+
+.light-purple {
+  background-color: #c603fc;
+}
+
+.red {
+  background-color: #fc031c;
+}
+
+.orange {
+  background-color: #fc8c03;
+}
+
+.yellow {
+  background-color: #fcd303;
+}
+
+.white {
+  background-color: white;
+}
