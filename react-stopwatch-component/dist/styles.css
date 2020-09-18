@@ -1,0 +1,20 @@
+.circle {
+  border-radius: 50%;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+}
+
+.number {
+  position: absolute;
+  font-size: 60px;
+  text-align: center;
+  left: 36%;
+  top: 28%;
+}
+
+.image-play {
+  background-image: url("../images/pause.jpg");
+  width: 300px;
+}
