@@ -8,31 +8,29 @@ class NewsletterForm extends React.Component {
     this.state = {
       email: ''
     };
-    this.handleClick = this.handleClick.bind(this);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleClick() {
-    const emailElement = document.querySelector('#email');
+  handleChange(event) {
     this.setState({
-      email: emailElement.value
+      email: event.target.value
     });
   }
 
-  handleChange() {
-
-  }
-
-  handleSubmit() {
-
+  handleSubmit(event) {
     console.log(this.state);
+    event.preventDefault();
   }
 
   render() {
-
     return (
-      <form>
-        <label htmlFor="email">Email</label>
-        <input id="email" type="email"></input>
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Email
+        </label>
+        <input type="email" onChange={this.handleChange}></input>
         <button>Sign Up</button>
       </form>
     );
