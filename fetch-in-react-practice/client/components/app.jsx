@@ -18,6 +18,9 @@ class App extends React.Component {
   }
 
   getAllTodos() {
+    fetch('')
+      .then(res => res.json());
+    this.setState();
     /**
      * Use fetch to send a GET request to `/api/todos`.
      * Then 😉, once the response JSON is received and parsed,
