@@ -1,0 +1,17 @@
+i {
+  font-size: 50px;
+}
+
+.menu-area {
+  position: absolute;
+  width: 150px;
+  height: 100vh;
+}
+
+.gray-area {
+  position: absolute;
+  width: 100vh;
+  height: 100vh;
+  background: grey;
+  left: 250px;
+}
