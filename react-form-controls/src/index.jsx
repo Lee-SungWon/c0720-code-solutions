@@ -30,7 +30,7 @@ class NewsletterForm extends React.Component {
         <label>
           Email
         </label>
-        <input type="email" onChange={this.handleChange}></input>
+        <input value={this.state.email} type="email" onChange={this.handleChange}></input>
         <button>Sign Up</button>
       </form>
     );
