@@ -19,61 +19,55 @@ class App extends React.Component {
 
   getAllTodos() {
     fetch('/api/todos')
-      .then(res => res.json());
+      .then(res => res.json())
       .then(res => {
-        this.setState({
-          todos: res
-        });
+        this.setState({ todos: res });
       })
-      .catch(err => console.error('fetch failed!', err))
+      .catch(err => console.error('fetch failed', err));
   }
 
   addTodo(newTodo) {
     fetch('/api/todos', {
       method: 'POST',
       headers: {
-        'Content-Type: 'application/json'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(newTodo)
-      })
+    })
       .then(res => res.json())
       .then(res => {
-        this.setState({
-          todos: this.state.todos.concat(res)
-        })
+        this.setState({ todos: this.state.todos.concat(res) });
       })
-      .catch(err => console.error('fetch failed!', err))
+      .catch(err => console.error('fetch failed!', err));
   }
-
-  /**
-   * Find the index of the matching todo in the state array.
-   * Find its "isCompleted" status.
-   * Make a new Object containing the opposite "isCompleted" status.
-   * Use fetch to send a PATCH request to `/api/todos/${todoId}`
-   * Then 😉, once the response JSON is received and parsed,
-   * replace the old todo in state.
-   *
-   * TIP: Be sure to SERIALIZE the updates in the body with JSON.stringify()
-   * And specify the "Content-Type" header as "application/json"
-   */
 
   toggleCompleted(todoId) {
     const arr = this.state.todos;
+    let todoIndex;
     for (let i = 0; i < arr.length; i++) {
       if (arr[i].id === todoId) {
-        if (!arr[i].isCompleted) {
-          arr[i].isCompleted = true;
-          fetch(`/api/todos/${todoId}`, {
-            method: "PATCH",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(arr[i])
-          })
-            .then(res => res.json())
-            .then(res => this.setState([{ todos: res }]))
-            .catch(err => console.error('fetch failed!', err))
-        }
+        todoIndex = i;
+        break;
       }
     }
+    const targetTodo = this.state.todos[todoIndex];
+    const currentIsCompleted = targetTodo.isCompleted;
+    const update = {
+      isCompleted: !currentIsCompleted
+    };
+
+    fetch(`/api/todos/${todoId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(update)
+    })
+      .then(res => res.json())
+      .then(updatedTodo => {
+        const newTodos = this.state.todos.slice();
+        newTodos[todoIndex] = updatedTodo;
+        this.setState({ todos: newTodos });
+      })
+      .catch(err => console.error('fetch failed!', err));
   }
 
   render() {
