@@ -17,7 +17,7 @@ app.get('/api/grades', (req, res) => {
 
   db.query(sql)
     .then(result => {
-      const grades = result.rows;
+      const grades = result.rows[0];
       res.status(200).json(grades);
     })
     .catch(err => {
@@ -46,7 +46,7 @@ app.post('/api/grades', (req, res) => {
 
   db.query(sql, params)
     .then(result => {
-      const grade = result.rows;
+      const grade = result.rows[0];
       res.status(201).json(grade);
     })
     .catch(err => {
@@ -78,7 +78,7 @@ app.put('/api/grades/:id', (req, res) => {
 
   db.query(sql, params)
     .then(result => {
-      const grade = result.rows;
+      const grade = result.rows[0];
       if (!grade) {
         res.status(404).json({
           error: `Cannot find grade with ID ${id}`
@@ -115,7 +115,7 @@ app.delete('/api/grades/:id', (req, res) => {
 
   db.query(sql, params)
     .then(result => {
-      const grade = result.rows;
+      const grade = result.rows[0];
       if (!grade) {
         res.status(404).json({
           error: `Cannot find grade with ID ${id}`
